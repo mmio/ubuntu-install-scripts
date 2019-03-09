@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: CreatePosixThread
+# key: ptc
+# --
+pthread_create(&${thread}, NULL, ${function}, NULL);

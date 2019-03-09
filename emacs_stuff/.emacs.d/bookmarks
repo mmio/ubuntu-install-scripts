@@ -1,0 +1,15 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("ranger-d"
+ (filename . "~/Documents/")
+ (front-context-string . "python\n  drwxr-x")
+ (rear-context-string . "0K feb  4 22:18 ")
+ (position . 709))
+("ranger-b"
+ (filename . "~/Documents/beletria/")
+ (front-context-string)
+ (rear-context-string . "0K jan 31 13:34 ")
+ (position . 92))
+)

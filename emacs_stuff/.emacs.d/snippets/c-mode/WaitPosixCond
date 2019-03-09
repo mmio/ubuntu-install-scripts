@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: WaitPosixCond
+# key: pcw
+# --
+pthread_cond_wait(&${cond}, &${mutex});

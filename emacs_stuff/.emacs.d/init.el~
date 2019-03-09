@@ -1,0 +1,36 @@
+;; init.el --- Emacs configuration
+
+;; INSTALL PACKAGES
+;; --------------------------------------
+
+(require 'package)
+
+(add-to-list 'package-archives
+       '("melpa" . "http://melpa.org/packages/") t)
+
+(package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar myPackages
+  '(better-defaults))
+
+(mapc #'(lambda (package)
+    (unless (package-installed-p package)
+      (package-install package)))
+      myPackages)
+
+;; BASIC CUSTOMIZATION
+;; --------------------------------------
+
+(custom-set-variables
+ '(inhibit-startup-message t)
+ '(menu-bar-mode nil)
+ '(scroll-bar-mode nil)
+ '(tool-bar-mode nil))
+
+(global-linum-mode t)
+
+;; init.el ends here
+
+

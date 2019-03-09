@@ -1,0 +1,283 @@
+* Configuration file for the i3 window manager with gaps
+
+#+PROPERTY: header-args :tangle ./config
+
+** Modifier key
+
+   This is the Windows/Super key
+
+#+BEGIN_SRC conf
+set $mod Mod4
+#+END_SRC
+
+** UI
+*** Colors
+
+#+BEGIN_SRC conf
+client.focused #0088CC #0088CC #ffffff #dddddd
+client.focused_inactive #333333 #333333 #888888 #292d2e
+client.unfocused #333333 #333333 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000
+#+END_SRC
+
+*** Font
+
+    UI font
+
+#+BEGIN_SRC conf
+font pango:"Dejavu Sans Mono" 10
+#+END_SRC
+
+*** Borders
+
+    Hide borders when there is only 1 window
+
+#+BEGIN_SRC conf
+hide_edge_borders smart
+#+END_SRC
+
+    Thickness of the border
+
+#+BEGIN_SRC conf
+for_window [class="^.*"] border pixel 0
+#+END_SRC
+
+*** Windows
+    
+    Move windows with the mouse and mod key
+
+#+BEGIN_SRC conf
+floating_modifier $mod
+#+END_SRC
+
+    Closing windows
+
+#+BEGIN_SRC conf
+bindsym $mod+Shift+q kill
+#+END_SRC
+
+    Changing focus
+
+#+BEGIN_SRC conf
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+#+END_SRC
+
+    Move focused window
+
+#+BEGIN_SRC conf
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+#+END_SRC
+
+    Spliting horizontaly and verticaly
+
+#+BEGIN_SRC conf
+bindsym $mod+h split h
+bindsym $mod+v split v
+#+END_SRC
+
+    Toggle fullscreen
+
+#+BEGIN_SRC conf
+bindsym $mod+f fullscreen toggle
+#+END_SRC
+
+    Windows layout
+
+#+BEGIN_SRC conf
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+#+END_SRC
+
+    Floating windows
+
+#+BEGIN_SRC conf
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+#+END_SRC
+
+    Focus parent
+
+#+BEGIN_SRC conf
+bindsym $mod+a focus parent
+#+END_SRC
+
+    Resize
+
+#+BEGIN_SRC conf
+mode "resize" {
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym l resize shrink height 5 px or 5 ppt
+        bindsym semicolon resize grow width 5 px or 5 ppt
+
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+#+END_SRC
+
+*** Gaps
+
+#+BEGIN_SRC conf
+gaps inner 13
+#+END_SRC
+
+*** Bar
+
+    Polybar
+
+#+BEGIN_SRC conf
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#+END_SRC
+
+*** Wallpaper
+
+#+BEGIN_SRC conf
+exec_always --no-startup-id nitrogen --set-scaled ~/Pictures/wallpaper.jpg
+#+END_SRC
+
+*** Workspaces
+
+   Switching
+
+#+BEGIN_SRC conf
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+#+END_SRC
+
+   Moving
+
+#+BEGIN_SRC conf
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+#+END_SRC
+   
+** Application launcher
+   Rofi
+#+BEGIN_SRC conf
+bindsym $mod+d exec --no-startup-id "rofi -modi 'run,window,ssh,combi' -show combi -threads 0 -bw 0 -hide-scrollbar -font 'Dejavu Sans Mono 16' -lines 20"
+#+END_SRC
+
+** Applications
+
+   Terminal
+
+#+BEGIN_SRC conf
+bindsym $mod+Return exec urxvt
+#+END_SRC
+
+   Browser:Chromium, patched for hardware acceleration
+
+#+BEGIN_SRC conf
+bindsym $mod+b exec --no-startup-id chromium-browser
+#+END_SRC
+
+   Editor:Emacs
+
+#+BEGIN_SRC conf
+bindsym $mod+n exec --no-startup-id Emacs
+# exec --no-startup-id i3-msg 'workspace 1; exec Emacs'
+#+END_SRC
+
+   File Manger:Ranger
+
+#+BEGIN_SRC conf
+bindsym $mod+m exec --no-startup-id urxvt -e ranger
+#+END_SRC
+
+   Lockscreen:i3lock
+
+#+BEGIN_SRC conf
+bindsym $mod+Home exec --no-startup-id i3lock -i ~/Pictures/Lockscreen/lock.png
+#+END_SRC
+
+   NightMode:Redshift
+
+#+BEGIN_SRC conf
+exec --no-startup-id redshift
+#+END_SRC
+
+   Network Manager Applet
+
+#+BEGIN_SRC conf
+exec --no-startup-id nm-applet
+#+END_SRC
+
+   Composer:Compton
+
+#+BEGIN_SRC conf
+exec_always --no-startup-id compton --config /home/dominik/.config/compton/compton.conf
+#+END_SRC
+
+** Keyboard
+
+   Keyboard layout setting
+
+#+BEGIN_SRC conf
+exec_always --no-startup-id "setxkbmap -model pc105 -layout us,sk,hu -variant ,qwerty,qwerty -option grp:shifts_toggle,ctrl:nocaps"
+#+END_SRC
+
+** Multimedia keys
+
+   Volume
+
+#+BEGIN_SRC conf
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/volumeUp.sh up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/volumeDown.sh
+bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/volumeMute.sh
+#+END_SRC
+
+   Brightness
+
+#+BEGIN_SRC conf
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+#+END_SRC
+
+** Misc
+
+   Restart i3
+
+#+BEGIN_SRC conf
+bindsym $mod+Shift+r restart
+#+END_SRC
+
+   Logout
+
+#+BEGIN_SRC conf
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'EXIT' -b 'Yes' 'i3-msg exit'"
+#+END_SRC

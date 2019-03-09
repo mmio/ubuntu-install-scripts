@@ -1,0 +1,90 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/dominik/Desktop/" . "perceptron/")
+ ("/home/dominik/git/" . "pdf-tools/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/dominik/git/PaPP/examples/opencl/"
+ "/home/dominik/Desktop/stuff/"
+ "/home/dominik/Desktop/"
+ "/home/dominik/Desktop/PyTorch_Playground/"
+ "/home/dominik/Desktop/uloha1priklady/"
+ "/home/dominik/Documents/PARALPR/cvicenie/"
+ "/home/dominik/git/PaPP/examples/pthreads/"
+ "/home/dominik/Documents/writings/notes/"
+ "/home/dominik/keras_w_tensorflow/venv/src/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "cl_vector.cxx"
+ "stuff.js"
+ "ME.org"
+ "ME.html"
+ "vavjs.todo.org"
+ "todo.org"
+ "prepare.py"
+ "lovci_a_zberaci.cxx"
+ "zad1.cxx"
+ "pt_basic_mod.c"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/dominik/Documents/PARALPR/cvicenie/" (23484 45543 286025 131000) "../" "zad1" "./" "zad2.cxx" "zad1.cxx" "zad1.c" "pt_cond_ex.c" "zad2" "veci.c")
+
+ ("/home/dominik/Desktop/PyTorch_Playground/" (23524 5407 988432 553000) "../" "./" "data/" "model.py")
+
+ ("/home/dominik/Desktop/" (23567 40192 748743 864000) "icp.org" "Spiral Knights.desktop" "openMP/" "wasd.c" "stuff.js" "stuff/" "UNUSED/" "bct.pdf" "Particles _ Instancing_files/" "../" "Vasko_papp_zad2/" "ppgso.todo" "bc_t.jpeg" "./" "cheatsheet.png" "ME.html" "screenshot_1.png" "test" "Datasets/" "openmp-examples-4.5.0.pdf" "refs/" "openCL_perceptron/" "screenshot.png" "orgcard.pdf" "Game/" "perceptron_backupu/" "ICP_WEB/" "Vasko_papp_zad2.zip" "Untitled Document 1" "vavjs.todo.org" "manjaro-i3-17.1.12-stable-x86_64.iso" "BC/" "QCA6174/" "doingstuff" "Particles _ Instancing.html" "OpenMP-4.5-1115-CPP-web.pdf" "ltximg/" "PyTorch_Playground/" "mpi_hello_world.c" "backgrounds/" "todo.org" "a.out" "icp.txt" "bc.tex" "perceptron.zip" "Screenshot_2018-12-06 Generovanie textu.png" "ME.org" "#icp.org#" "auto_install/" "Vasko_BP1.pdf")
+
+ ("/home/dominik/Desktop/stuff/" (23546 41671 176586 842000) "stuff.js" "../" "./" ".indium.json" "#stuff.js#")
+
+ ("/home/dominik/git/PaPP/examples/opencl/" (23564 7187 210941 300000) "cl_matrix.c" "../" "./" "cl_vector.cxx" "vector.cl" "cl_matrix.cxx" "opencl.layout" "Makefile" "opencl.cbp" "gradient.cl" "cl_vector" "cl_vector.c" "cl_matrix" "a.out" "cl_gl_gradient.c")
+
+ ("/home/dominik/Desktop/openCL_perceptron/src/" (23567 56915 370452 355000) ".#util.c" "main.c" "util.h" "../" "main_old.c" "./" "main_old2.c" "kernel1.cl" "layer.h" "kernel3.cl" "layer.c" "util.c" "kernel2.cl")
+
+ ("/home/dominik/" (23561 43788 137841 65000) ".dbus/" ".gnupg/" ".mozilla/" "git/" "Public/" ".mozbuild/" "CLion/" ".texlive2017/" ".xsession-errors" ".emacs.d/" ".nvm/" ".emulator_console_auth_token" "../" "snap/" ".IdeaIC2018.3/" ".steampath" ".multirust/" "./" ".gimp-2.8/" ".cache/" ".bash_logout" ".gconf/" ".bashrc.bak" "Desktop/" ".gphoto/" ".pki/" ".v8flags.6.8.275.32-node.28.4bd2b007716888ed6bf6c2399a6d7305.json" "Music/" ".w3m/" ".keras/" "Android/" ".rnd" "torch-cl/" ".rustup/" ".AndroidStudio3.1/" ".imageio/" ".hgrc" ".thunderbird/" ".gradle/" "org/" ".shutter/" "scripts/" ".node_repl_history" ".launchpadlib/" ".steam/" ".android/" ".Xauthority-n" ".gtkrc-2.0" ".Xresources" ".profile" ".fontconfig/" "intel/" ".nexe/" ".CLion2018.2/" ".aspell.sk.prepl" ".lesshst" ".tern-port" ".aspell.en.prepl" ".IdeaIC2018.2/" ".dosbox/" ".pkg-cache/" ".xinputrc" ".ICEauthority" ".gnome2/" "Videos/" "VirtualBox VMs/" ".cargo/" ".Xdefaults" "torch-hdf5/" "Documents/" "bin/" "core" "Pictures/" ".bash_history" ".python_history" ".aspell.en.pws" ".local/" ".pencil/" "keras_w_tensorflow/" "Downloads/" ".java/" ".elfeed/" ".thumbnails/" ".ssh/" ".sudo_as_admin_successful" ".aspell.sk.pws" ".ssr/" ".cargo_old/" ".selected_editor" ".npm/" ".gvfs/" ".bashrc" ".wget-hsts" ".gitconfig" ".jupyter/" ".icons/" ".hplip/" ".ipython/" ".emacs" ".babel.json" "spiral/" "Templates/" ".PyCharmCE2018.2/" ".gnome/" "torch/" ".viminfo" ".steampid" ".pulse-cookie" ".virtualenvs/" "IdeaProjects/" "local/" ".config/" ".cask/")
+
+ ("/home/dominik/org/" (23550 44967 823592 288000) "exercise.org" ".#bc.org" "misc.org" "../" "./" "bc.org" "test.out" "data/" "test.c" "school.org" "core")
+
+ ("/home/dominik/Desktop/perceptron/" (23549 35385 98550 977000) "main.c" "util.h" "../" "./" "main.cxx" "layer.h" "layer.c" "a.out" "util.c")
+
+ ("/home/dominik/.config/i3/" (23548 22470 580729 612000) "../" "./" "config" "volumeUp.sh" "config.org" "volumeMute.sh" "volumeDown.sh" "config_test")
+
+ ("/home/" (23401 38028 723883 465000) "dominik/" "../" "./")
+
+ ("/home/dominik/git/ICP_prototyp/" (23525 61933 681801 619000) ".#Filter.html" "Detail1.html" "../" "./" "Filter.html" "nav.js" "Home.html" "Detail2.html" "data/" "index.html" "pics/" "assets/" "README.md" "login.html" "js/" ".git/" "Filter_SDM.html" "#Filter.html#" "jquery.js" "Infor_SDM.html" "Detail3.html")
+
+ ("/home/dominik/Desktop/uloha1priklady/" (23509 59136 96246 414000) "organizmy" "../" "generator_pismenok" "generator_pismenok.c" "./" "organizmy.c" "maliari.c" "lovci_a_zberaci" "volici.c" "a.out" "lovci_a_zberaci.c" "pekari.c" "slachtici_a_poddani.c")
+
+ ("/home/dominik/git/wawjs/05-cvicenie/wawjs-cvicenie05/test/" (23492 30374 285459 93000) "array-impls.spec.js" "../" "./" ".tern-port" ".#array-impls.spec.js")
+
+ ("/home/dominik/Documents/writings/notes/" (23453 13143 465866 688000) "../" "Study.org" "PE.org" "./" "Summary.org" "Social.org" "EX.org" "Leisure.org" "Projects.org" "codinggame/")
+
+ ("/home/dominik/git/PaPP/examples/pthreads/" (23461 9736 261813 22000) "pt_condition1.c" "pt_semaphore.c" "pt_condition2.c" "dphil_locktable" "pt_join2.c" "../" "pt_hello1.c" "pt_detached.c" "pt_condition2" "./" "pt_semaphore" "dphil_footman" "dphil_leftie.c" "pt_hello1" "pt_join1" "pt_condition1" "pt_detached" "dphil_locktable.c" "Makefile" "pt_basic.c" "pt_join2" "pt_dotprod.c" "pt_mutex.c" "pt_hello2.c" "dphil_leftie" "pt_mutex" "pt_basic_mod" "pthreads.layout" "pt_dotprod" "pt_hello2" "pthreads.cbp" "pt_condition3" "pt_condition3.c" "pt_basic" "pt_basic_mod.c" "pt_join1.c" "dphil_footman.c")
+
+ ("/home/dominik/bin/" (23466 2644 218989 171000) "Emacs" "CLion" "../" "./" "enable_powersaver" "reset_wifi")
+
+ ("/home/dominik/Documents/VAVJS/notes/" (23464 65343 280591 179000) "pseudo_essej.tex" "../" "./" "screenshot_1.png" "notes.tex" "screenshot_arjs.png" "notes.pdf" "functional-reactive-programming.org" "screenshot_nexe.png" "vavjs_vasko.pdf" "pseudo_essej.org" "notes.org" ".#notes.org")
+
+ ("/home/dominik/Documents/ME/" (23455 33504 659257 106000) "c1u3p2.png" "c1u3.png" "../" "c1u4p1.png" "./" "c1u2.png" "c1u5p2.png" "notes.tex" "#notes.tex#" "c1u4p2.png" "notes.pdf" "README.md" "c1u3p1.png" "3d.png" "ltximg/" "3d2.png" "c1u1.png" ".git/" "c1u5p1.png" "Cvičenia/" "notes.html" "notes.org")
+
+ ("/home/dominik/keras_w_tensorflow/venv/src/" (23437 8256 64161 328000) "shake_sample.py" "sk_wiki.xml" "../" "./" "ModelCreator.py" "sample.py" "data/" "ModelCreator.pyc" "test.pyc" "utils/" "SessionConfig.py" "shake.py" "SessionConfig.pyc" "slovak_parse.py" "simple_model.py" "simple_model_partial.py" "__pycache__/")
+
+ ("/home/dominik/Documents/bc/" (23438 36188 911940 69000) "bc.pdf" "../" "./" "bc.org" "questions" "#bc.bbl#" "README.md" "bc.bbl" ".git/" "bc.tex" "lit/" ".gitignore" "pozn.org")
+
+ ("/home/dominik/Desktop/net/" (23436 8480 283287 860000) "flask_app/" "../" "./" "schema.sql" "app.py" "database.db" "models.py")
+
+ ("/home/dominik/Desktop/kerasing/" (23433 2507 378815 714000) "sk_wiki.xml" "../" "./" "Main.py" "sk_wiki_full.xml" "unique_chars.pickle")
+
+ ("/home/dominik/git/pdf-tools/" (23413 12091 561486 123000) "COPYING" "../" "./" "test/" "appveyor.yml" "README.org" "COPYING.SYNCTEX" "ci/" "pdf-tools-0.90.entry" "lisp/" "Makefile" "TODO" "README" "NEWS" "server/" "pdf-tools-0.90.tar" ".git/" ".travis.yml" "Cask" "pdf-tools-readme.txt" ".ert-runner" ".gitignore" ".cask/")
+
+ ("/home/dominik/git/" (23413 11323 612921 910000) "linux-unattended-installation/" "i3/" "../" "./" "bash_it/" "polybar/" "light/" "pdf-tools/")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

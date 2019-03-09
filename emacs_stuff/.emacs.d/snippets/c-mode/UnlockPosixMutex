@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: UnlockPosixMutex
+# key: pmu
+# --
+pthread_mutex_unlock(&${mutex});

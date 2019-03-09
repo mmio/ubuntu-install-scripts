@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: JoinPosixThread
+# key: ptj
+# --
+pthread_join(&${thread}, NULL);

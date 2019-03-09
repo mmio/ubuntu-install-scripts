@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: SignalPosixCond
+# key: pcs
+# --
+pthread_cond_signal(&${cond});

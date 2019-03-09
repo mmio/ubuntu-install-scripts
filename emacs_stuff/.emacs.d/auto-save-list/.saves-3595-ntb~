@@ -1,0 +1,12 @@
+/ssh:v@192.168.55.55:/home/v/Desktop/kerasing/run.sh
+/tmp/#!ssh:v@192.168.55.55:!home!v!Desktop!kerasing!run.sh#
+/ssh:v@192.168.55.55:/home/v/Desktop/kerasing/Main.py
+/tmp/#!ssh:v@192.168.55.55:!home!v!Desktop!kerasing!Main.py#
+/ssh:v@192.168.55.55:/home/v/.theanorc
+/tmp/#!ssh:v@192.168.55.55:!home!v!.theanorc#
+/ssh:v@192.168.55.55:/home/v/.keras/keras.json
+/tmp/#!ssh:v@192.168.55.55:!home!v!.keras!keras.json#
+/ssh:v@192.168.55.55:/home/v/Desktop/kerasing/ModelCreator.py
+/tmp/#!ssh:v@192.168.55.55:!home!v!Desktop!kerasing!ModelCreator.py#
+/home/dominik/Desktop/doc.org
+/home/dominik/Desktop/#doc.org#

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: LockPosixMutex
+# key: pml
+# --
+pthread_mutex_lock(&${mutex});

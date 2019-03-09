@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: CreatePosixCond
+# key: pcc
+# --
+pthread_cond_t ${cond} = PTHREAD_COND_INITIALIZER;

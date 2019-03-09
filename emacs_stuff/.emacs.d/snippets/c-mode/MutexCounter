@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: MutexCounter
+# key: mc
+# --
+pthread_thread_mutex_lock(&${1:mtx});
+$1++;
+pthread_mutex_unlock(&$1);

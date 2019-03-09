@@ -1,0 +1,1 @@
+("~/WebstormProjects/BFJS/" "~/Documents/algorithms_coursera/week1_programming_assignment/percolation/" "~/Documents/machine_learning_coursera/" "~/git/light/" "~/IdeaProjects/jcommon-1.0.23/" "~/IdeaProjects/HelloWorld/")

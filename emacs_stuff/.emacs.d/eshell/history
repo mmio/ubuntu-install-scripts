@@ -1,0 +1,37 @@
+ls
+less
+./a.out 
+gcc test.c
+./a.out 
+gcc test.c
+./a.out 
+./a.out 
+gcc test.c
+./a.out 
+a;sldkfj
+exit
+ll
+ls
+ls -la
+cd src/keras_tutorial/
+ls
+source ../../bin/activate
+ll
+ls
+cp test.py test2.py
+exit
+exit
+rm test2.py
+rm *.html
+exit
+pip3 install numpy matplotlib
+sudo pip3 install numpy matplotlib
+sudo pip3 install tkinter
+sudo pip3 install tkinter
+exit
+ls
+ls -l
+rm Study.tex Study.pdf 
+ls
+ls -la
+exit

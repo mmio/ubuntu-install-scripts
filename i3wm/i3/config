@@ -1,0 +1,122 @@
+set $mod Mod4
+
+client.focused #0088CC #0088CC #ffffff #dddddd
+client.focused_inactive #333333 #333333 #888888 #292d2e
+client.unfocused #333333 #333333 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000
+
+font pango:"Dejavu Sans Mono" 10
+
+hide_edge_borders smart
+
+for_window [class="^.*"] border pixel 0
+
+floating_modifier $mod
+
+bindsym $mod+Shift+q kill
+
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+
+mode "resize" {
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym l resize shrink height 5 px or 5 ppt
+        bindsym semicolon resize grow width 5 px or 5 ppt
+
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+gaps inner 13
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+exec_always --no-startup-id nitrogen --set-scaled ~/Pictures/wallpaper.jpg
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+d exec --no-startup-id "rofi -modi 'run,window,ssh,combi' -show combi -threads 0 -bw 0 -hide-scrollbar -font 'Dejavu Sans Mono 16' -lines 20"
+
+bindsym $mod+Return exec urxvt
+
+bindsym $mod+b exec --no-startup-id chromium-browser
+
+bindsym $mod+n exec --no-startup-id Emacs
+# exec --no-startup-id i3-msg 'workspace 1; exec Emacs'
+
+bindsym $mod+m exec --no-startup-id urxvt -e ranger
+
+bindsym $mod+Home exec --no-startup-id i3lock -i ~/Pictures/Lockscreen/lock.png
+
+exec --no-startup-id redshift
+
+exec --no-startup-id nm-applet
+
+exec_always --no-startup-id compton --config /home/dominik/.config/compton/compton.conf
+
+exec_always --no-startup-id "setxkbmap -model pc105 -layout us,sk,hu -variant ,qwerty,qwerty -option grp:shifts_toggle,ctrl:nocaps"
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/volumeUp.sh up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/volumeDown.sh
+bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/volumeMute.sh
+
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+
+bindsym $mod+Shift+r restart
+
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'EXIT' -b 'Yes' 'i3-msg exit'"
