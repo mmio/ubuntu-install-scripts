@@ -15,3 +15,6 @@ To successfully run the installation script you will need to specify two directo
 
 # Customization
 To select what should and should not be installed check out the main function in the install.sh file.
+
+# Warning
+This setup works for my system, it might not work for you. If you decide to use it prepare for troubleshooting.
