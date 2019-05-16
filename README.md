@@ -18,3 +18,6 @@ To select what should and should not be installed check out the main function in
 
 # Warning
 This setup works for my system, it might not work for you. If you decide to use it prepare for troubleshooting.
+
+# Feedback
+Any constructive criticism and pull requests are welcome.
