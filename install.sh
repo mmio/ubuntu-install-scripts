@@ -274,7 +274,7 @@ bashmount_install() {
     
     sudo install -m644 bashmount.1.gz /usr/share/man/man1/bashmount.1.gz
 
-    echo "Alias for bashmount" >> ~/.bashrc
+    echo "# Alias for bashmount" >> ~/.bashrc
     echo "alias bm='bashmount'" >> ~/.bashrc
 
     msg "FINISHED - Installing Bashmount"
@@ -377,11 +377,11 @@ main() {
     clone_repos
 
     i3_deps
-    # i3_build_install
+    i3_build_install
     i3_configure
 
     polybar_deps
-    # polybar_install
+    polybar_install
     polybar_configure
 
     bash-it_configure
