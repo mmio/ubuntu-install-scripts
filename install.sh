@@ -1,17 +1,12 @@
 #!/bin/bash
 
 # use org-mode then tangle into a script
-# check if the files are present in the directories
 # Emacs configuration rewrite everything to use use-package
 # Emacs tern - npm stuff ?
 # change touchpad settings to tap-to-click
 # Create a script to connect to STU VPN without actual password via GDG
 
-#  ___ ___ ___ ___ ___ _____ ___  ___ ___ ___ ___
-# |   \_ _| _ \ __/ __|_   _/ _ \| _ \_ _| __/ __|
-# | |) | ||   / _| (__  | || (_) |   /| || _|\__ \
-# |___/___|_|_\___\___| |_| \___/|_|_\___|___|___/
-#
+# Directories
 git_dir=~/Repos
 bkp_dir=~/Repos/my-ubuntu-autoinstall-scripts
 
