@@ -318,6 +318,10 @@ misc() {
     #cp -r ./projects/* ~/
     #cp -r ./tensorflow_i3_U5005 ~/Downloads/
 
+    cp -r $bkp_dir/i3wm/i3/i3scripts ~/.config/i3
+    sudo apt install python3-pip
+    pip3 install fontawesome i3ipc
+    
     mkdir -p ~/.local/share/fonts
 
     cp $bkp_dir/fonts/* ~/.local/share/fonts/

@@ -1,7 +1,8 @@
+
 ; For help: https://github.com/jaagr/polybar
 
 [colors]
-background = #008080
+background = #00000000
 background-alt = #00008081
 
 foreground = #fff
@@ -19,8 +20,6 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 padding-right = 5
-
-line-size = 2
 
 module-margin-left = 0
 module-margin-right = 6
@@ -56,8 +55,8 @@ label-indicator-underline = ${colors.secondary}
 type = internal/bspwm
 
 label-focused = %index%
-label-focused-background = #008080
-label-focused-underline= #ffffff
+label-focused-background = #44000000
+label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 label-occupied = %index%
@@ -94,12 +93,12 @@ label-mode-padding = 2
 label-mode-foreground = #fff
 label-mode-background = ${colors.primary}
 
-label-focused = %name%
+label-focused = %name% %icon%
 label-focused-background = ${module/bspwm.label-focused-background}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
-label-unfocused = %name%
+label-unfocused = %name% %icon%
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 label-unfocused-background = ${colors.background}
 
@@ -139,6 +138,7 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
+format-underline = #f90000
 label = %percentage:3%%
 
 [module/memory]
