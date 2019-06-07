@@ -281,3 +281,9 @@ bindsym $mod+Shift+r restart
 #+BEGIN_SRC conf
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'EXIT' -b 'Yes' 'i3-msg exit'"
 #+END_SRC
+
+Autorename workspaces
+
+#+BEGIN_SRC conf
+exec_always ~/.config/i3/i3scripts/autoname_workspaces.py &
+#+END_SRC

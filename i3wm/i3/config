@@ -120,3 +120,5 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bindsym $mod+Shift+r restart
 
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'EXIT' -b 'Yes' 'i3-msg exit'"
+
+exec_always ~/.config/i3/i3scripts/autoname_workspaces.py &
