@@ -1,6 +1,5 @@
-#! /bin/bash
+#!/bin/bash
 
-# create repository on github
 # use org-mode then tangle into a script
 # check if the files are present in the directories
 # Emacs configuration rewrite everything to use use-package
@@ -13,8 +12,8 @@
 # | |) | ||   / _| (__  | || (_) |   /| || _|\__ \
 # |___/___|_|_\___\___| |_| \___/|_|_\___|___|___/
 #
-git_dir=~/git
-bkp_dir=~/Desktop/auto_install
+git_dir=~/Repos
+bkp_dir=~/Repos/my-ubuntu-autoinstall-scripts
 
 msg() {
     echo "------|" $1 "|------"
@@ -35,7 +34,7 @@ upgrade_system() {
 add_repositories() {
     msg "Adding repositories"
 
-    
+
     #sudo add-apt-repository ppa:saiarcot895/chromium-dev
     #sudo apt-get update
     #sudo apt install chromium-browser
@@ -43,7 +42,7 @@ add_repositories() {
     # Install driver manually
     # https://www.linuxuprising.com/2018/08/how-to-enable-hardware-accelerated.html
     # sudo apt-mark hold vdpau-va-driver
-    
+
     msg "Finished Adding repositories"
 }
 
@@ -61,13 +60,13 @@ install_software() {
 
     #sudo apt install texlive-latex-extra
 
-    #sudo apt install snap snapd
+    sudo apt install snapd -y
 
     sudo snap install spotify
     #sudo snap install pycharm-community --classic
     #sudo snap install intellij-idea-community --classic
     #sudo snap install webstorm --classic
-    
+
     msg "FINISHED - Installing Software"
 }
 
@@ -75,7 +74,7 @@ clone_repos() {
     msg "Cloning repos"
 
     if [ ! -d "$git_dir/i3" ]; then
-	git clone https://github.com/Airblader/i3.git $git_dir/i3	
+	git clone https://github.com/Airblader/i3.git $git_dir/i3
     fi
 
     if [ ! -d "$git_dir/polybar" ]; then
@@ -130,15 +129,14 @@ i3_build_install() {
 
 i3_configure() {
     msg "Configuring i3gaps"
-
-    if [ ! -d ~/.config/i3 ]; then
-	mkdir ~/.config/i3
-	cp $bkp_dir/i3wm/i3/config ~/.config/i3/
-	cp $bkp_dir/i3wm/i3/config.org ~/.config/i3/
-	cp $bkp_dir/i3wm/i3/volumeUp.sh ~/.config/i3/
-	cp ./i3wm/i3/volumeDown.sh ~/.config/i3/
-	cp ./i3wm/i3/volumeMute.sh ~/.config/i3/
-    fi
+    
+    mkdir -p ~/.config/i3
+    
+    cp $bkp_dir/i3wm/i3/config ~/.config/i3/
+    cp $bkp_dir/i3wm/i3/config.org ~/.config/i3/
+    cp $bkp_dir/i3wm/i3/volumeUp.sh ~/.config/i3/
+    cp $bkp_dir/i3wm/i3/volumeDown.sh ~/.config/i3/
+    cp $bkp_dir/i3wm/i3/volumeMute.sh ~/.config/i3/
 
     msg "FINISHED - Configuring i3gaps"
 }
@@ -154,7 +152,7 @@ polybar_deps() {
 
     msg "FINISHED - Installing Polybar deps"
 }
-    
+
 polybar_install() {
     msg "Installing Polybar"
 
@@ -162,7 +160,7 @@ polybar_install() {
     rm -rf build/
     mkdir build/
     cd build/
-    
+
     cmake ..
     sudo make install
 
@@ -171,8 +169,9 @@ polybar_install() {
 
 polybar_configure() {
     msg "Configuring Polybar"
+
+    mkdir -p ~/.config/polybar
     
-    mkdir ~/.config/polybar
     cp $bkp_dir/polybar/config ~/.config/polybar/
     cp $bkp_dir/polybar/launch.sh ~/.config/polybar/
 
@@ -220,7 +219,8 @@ compton_install_configure() {
     cd $bkp_dir
 
     sudo apt install compton
-    mkdir ~/.config/compton
+    mkdir -p ~/.config/compton
+    
     cp ./compton/compton.conf ~/.config/compton/compton.conf
 
     msg "FINISHED - Configuring Compton"
@@ -257,19 +257,27 @@ xorg_configure() {
 }
 
 bashmount_install() {
+    msg "Installing Bashmount"
+
     cd $git_dir/bashmount
 
     sudo install -m755 bashmount /usr/bin/bashmount
     sudo install -m644 bashmount.conf /etc/bashmount.conf
 
     mkdir -p $HOME/.config/bashmount/
+    
     sudo install -m644 bashmount.conf $HOME/.config/bashmount/config
 
-    gzip -9 bashmount.1
+    if [ ! -e bashmount.1.gz ]; then
+	gzip -9 bashmount.1
+    fi
+    
     sudo install -m644 bashmount.1.gz /usr/share/man/man1/bashmount.1.gz
 
     echo "Alias for bashmount" >> ~/.bashrc
     echo "alias bm='bashmount'" >> ~/.bashrc
+
+    msg "FINISHED - Installing Bashmount"
 }
 
 emacs_configure() {
@@ -278,7 +286,8 @@ emacs_configure() {
     cp $bkp_dir/emacs_stuff/.emacs ~/
     cp -r $bkp_dir/emacs_stuff/.emacs.d/ ~/
 
-    mkdir ~/bin/
+    mkdir -p ~/bin/
+    
     cp $bkp_dir/emacs_stuff/Emacs ~/bin/
 
     msg "FINISHED - Configuring Emacs"
@@ -309,9 +318,7 @@ misc() {
     #cp -r ./projects/* ~/
     #cp -r ./tensorflow_i3_U5005 ~/Downloads/
 
-    if [ ! -d "~/.local/share/fonts/" ]; then
-	    mkdir ~/.local/share/fonts
-    fi
+    mkdir -p ~/.local/share/fonts
 
     cp $bkp_dir/fonts/* ~/.local/share/fonts/
     
@@ -323,6 +330,7 @@ misc() {
 set_wallpaper() {
     msg "Setting wallpaper"
 
+    mkdir -p ~/Pictures/
     cp $bkp_dir/wallpaper.jpg ~/Pictures/
 
     msg "FINISHED - Setting wallpaper"
@@ -357,37 +365,37 @@ bash_config() {
 }
 
 main() {
-    # upgrade_system
-    # install_software
-    # clone_repos
-    
-    # i3_deps
+    upgrade_system
+    install_software
+    clone_repos
+
+    i3_deps
     # i3_build_install
-    # i3_configure
-    
-    # polybar_deps
+    i3_configure
+
+    polybar_deps
     # polybar_install
-    # polybar_configure
+    polybar_configure
 
-    # bash-it_configure
-    
+    bash-it_configure
+
     # keras_tensorflow_install
-    
+
     # compton_install_configure
-    
-    # urxvt_configure
 
-    # ranger_configure
-    
-    # xorg_configure
-    
-    # emacs_configure
+    urxvt_configure
 
-    # bashmount_install
-    
-    #set_wallpaper
+    ranger_configure
 
-    # light_configure
+    xorg_configure
+
+    emacs_configure
+
+    bashmount_install
+
+    set_wallpaper
+
+    light_configure
 
     misc
 
