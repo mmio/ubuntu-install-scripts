@@ -50,22 +50,22 @@ install_software() {
 	msg "Installing Software"
 
 	sudo apt install emacs rofi git rxvt-unicode redshift \
-		nitrogen ranger i3lock libreoffice tlp powertop htop feh \
+		nitrogen ranger i3lock libreoffice tlp powertop htop sxiv \
 		thunderbird pavucontrol preload inkscape gimp cheese python-pip \
 		arandr zathura zathura-pdf-poppler zathura-ps zathura-djvu zathura-cb \
-		openvpn lxappearance curl g++ pandoc flameshot w3m w3m-img xbacklight -y
+		openvpn lxappearance curl g++ pandoc flameshot w3m w3m-img xbacklight \
+		mpv chromium-browser snapd -y
 
     #sudo apt install texlive-latex-base texlive-fonts-recommended \
 	#texlive-fonts-extra -y
 
     #sudo apt install texlive-latex-extra
 
-    sudo apt install snapd -y
-
     sudo snap install spotify
-    #sudo snap install pycharm-community --classic
-    #sudo snap install intellij-idea-community --classic
-    #sudo snap install webstorm --classic
+    sudo snap install pycharm-community --classic
+    sudo snap install intellij-idea-community --classic
+    sudo snap install webstorm --classic
+    sudo snap install datagrip --classic
 
     msg "FINISHED - Installing Software"
 }
@@ -241,7 +241,7 @@ ranger_configure() {
     cp -r $bkp_dir/ranger/* ~/.config/ranger/
     echo "set preview_images true" >> ~/.config/rc.conf
 
-    # Uncomment only if you wanna use the edefault urxvt image preview
+    # Uncomment only if you wanna use the default urxvt image preview
     # echo "set preview_images_method urxvt" >> ~/.config/rc.conf
 
     msg "FINISHED - Configuring Ranger"
@@ -253,8 +253,11 @@ xorg_configure() {
     cp $bkp_dir/xorg/.Xresources ~/
     xrdb ~/.Xresources
 
-    echo "Prevent Xorg from turning off" >> ~/.profile
-    echo "xset s off -dpms" >> ~/.profile
+    echo "# Apply hidpi scaling" >> ~/.xinitrc
+    echo "xrdb ~/.Xresources" >> ~/.xinitrc
+
+    echo "# Prevent Xorg from turning off" >> ~/.xinitrc
+    echo "xset s off -dpms" >> ~/.xinitrc
     
     msg "FINISHED - Configuring XORG"
 }
