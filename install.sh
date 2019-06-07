@@ -238,6 +238,7 @@ ranger_configure() {
     msg "Configuring Ranger"
 
     ranger --copy-config=all
+    cp -r $bkp_dir/ranger/* ~/.config/ranger/
     echo "set preview_images true" >> ~/.config/rc.conf
 
     # Uncomment only if you wanna use the edefault urxvt image preview
