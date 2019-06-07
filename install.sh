@@ -318,6 +318,9 @@ misc() {
     #cp -r ./projects/* ~/
     #cp -r ./tensorflow_i3_U5005 ~/Downloads/
 
+    sudo apt install xinit
+    echo "exec i3" >> ~/.xinitrc
+    
     cp -r $bkp_dir/i3wm/i3/i3scripts ~/.config/i3
     sudo apt install python3-pip
     pip3 install fontawesome i3ipc
