@@ -251,6 +251,8 @@ xorg_configure() {
     msg "Configuring XORG"
     
     cp $bkp_dir/xorg/.Xresources ~/
+    xrdb ~/.Xresources
+
     echo "Prevent Xorg from turning off" >> ~/.profile
     echo "xset s off -dpms" >> ~/.profile
     
