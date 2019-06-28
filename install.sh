@@ -49,7 +49,7 @@ install_software() {
 		thunderbird pavucontrol preload inkscape gimp cheese python-pip \
 		arandr zathura zathura-pdf-poppler zathura-ps zathura-djvu zathura-cb \
 		openvpn lxappearance curl g++ pandoc flameshot w3m w3m-img xbacklight \
-		mpv chromium-browser snapd -y
+		mpv chromium-browser snapd nm-applet pcmanfm cups jq megatools -y
 
     #sudo apt install texlive-latex-base texlive-fonts-recommended \
 	#texlive-fonts-extra -y
@@ -186,7 +186,7 @@ bash-it_configure() {
 keras_tensorflow_install() {
     msg "Installing Tensorflow"
     
-    sudo apt-get install python3-pip python3-dev python-virtualenv
+    sudo apt-get install python3-pip python3-dev python-virtualenv -y
 
     mkdir ~/keras_w_tensorflow
     cd ~/keras_w_tensorflow
@@ -213,7 +213,7 @@ compton_install_configure() {
 
     cd $bkp_dir
 
-    sudo apt install compton
+    sudo apt install compton -y
     mkdir -p ~/.config/compton
     
     cp ./compton/compton.conf ~/.config/compton/compton.conf
@@ -246,7 +246,7 @@ xorg_configure() {
     msg "Configuring XORG"
     
     cp $bkp_dir/xorg/.Xresources ~/
-    xrdb ~/.Xresources
+    # xrdb ~/.Xresources
 
     echo "# Apply hidpi scaling" >> ~/.xinitrc
     echo "xrdb ~/.Xresources" >> ~/.xinitrc
@@ -303,11 +303,11 @@ emacs_packages() {
 
     msg "Setting up pdf-tools dependencies"
 
-    sudo apt install make automake autoconf g++ gcc
-    sudo apt install libpng-dev zlib1g-dev
-    sudo apt install libpoppler-glib-dev
-    sudo apt install libpoppler-private-dev
-    sudo apt install imagemagick
+    sudo apt install make automake autoconf g++ gcc \
+    libpng-dev zlib1g-dev \
+    libpoppler-glib-dev \
+    libpoppler-private-dev \
+    imagemagick -y
 
     msg "FINISHED Setting up pdf-tools dependencies"
 }
@@ -319,11 +319,11 @@ misc() {
     #cp -r ./projects/* ~/
     #cp -r ./tensorflow_i3_U5005 ~/Downloads/
 
-    sudo apt install xinit
+    sudo apt install xinit -y
     echo "exec i3" >> ~/.xinitrc
     
     cp -r $bkp_dir/i3wm/i3/i3scripts ~/.config/i3
-    sudo apt install python3-pip
+    sudo apt install python3-pip -y
     pip3 install fontawesome i3ipc
     
     mkdir -p ~/.local/share/fonts
@@ -373,27 +373,27 @@ bash_config() {
 }
 
 main() {
-    upgrade_system
-    install_software
-    clone_repos
+    # upgrade_system
+    # install_software
+    # clone_repos
 
-    i3_deps
-    i3_build_install
-    i3_configure
+    # i3_deps
+    # i3_build_install
+    # i3_configure
 
-    polybar_deps
-    polybar_install
-    polybar_configure
+    # polybar_deps
+    # polybar_install
+    # polybar_configure
 
-    bash-it_configure
+    # bash-it_configure
 
     # keras_tensorflow_install
 
     # compton_install_configure
 
-    urxvt_configure
+    # urxvt_configure
 
-    ranger_configure
+    # ranger_configure
 
     xorg_configure
 
