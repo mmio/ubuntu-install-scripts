@@ -5,10 +5,11 @@
 # Emacs tern - npm stuff ?
 # change touchpad settings to tap-to-click
 # Create a script to connect to STU VPN without actual password via GDG
+# Add optional fingerprint reader configutation
 
 # Directories
 git_dir=~/Repos
-bkp_dir=~/Repos/my-ubuntu-autoinstall-scripts
+bkp_dir=~/Repos/ubuntu-install-scripts
 
 msg() {
     echo "------|" $1 "|------"
@@ -22,13 +23,13 @@ upgrade_system() {
 
     sudo apt update
     sudo apt upgrade -y
+    sudo apt autoremove
 
     msg "FINISHED - Upgrading System"
 }
 
 add_repositories() {
     msg "Adding repositories"
-
 
     #sudo add-apt-repository ppa:saiarcot895/chromium-dev
     #sudo apt-get update
@@ -42,25 +43,25 @@ add_repositories() {
 }
 
 install_software() {
-	msg "Installing Software"
+    msg "Installing Software"
 
-	sudo apt install emacs rofi git rxvt-unicode redshift \
-		nitrogen ranger i3lock libreoffice tlp powertop htop sxiv \
-		thunderbird pavucontrol preload inkscape gimp cheese python-pip \
-		arandr zathura zathura-pdf-poppler zathura-ps zathura-djvu zathura-cb \
-		openvpn lxappearance curl g++ pandoc flameshot w3m w3m-img xbacklight \
-		mpv chromium-browser snapd nm-applet pcmanfm cups jq megatools -y
+    sudo apt install emacs rofi git rxvt-unicode redshift \
+	 nitrogen ranger i3lock libreoffice tlp powertop htop sxiv \
+	 thunderbird pavucontrol preload inkscape gimp cheese python-pip \
+	 arandr zathura zathura-pdf-poppler zathura-ps zathura-djvu zathura-cb \
+	 openvpn lxappearance curl g++ pandoc flameshot w3m w3m-img xbacklight \
+	 mpv chromium-browser snapd pcmanfm cups jq megatools -y
 
-    #sudo apt install texlive-latex-base texlive-fonts-recommended \
-	#texlive-fonts-extra -y
+    # sudo apt install texlive-latex-base texlive-fonts-recommended \
+    # 	 texlive-fonts-extra -y
 
-    #sudo apt install texlive-latex-extra
+    # sudo apt install texlive-latex-extra
 
-    sudo snap install spotify
-    sudo snap install pycharm-community --classic
-    sudo snap install intellij-idea-community --classic
-    sudo snap install webstorm --classic
-    sudo snap install datagrip --classic
+    # sudo snap install spotify
+    # sudo snap install pycharm-community --classic
+    # sudo snap install intellij-idea-community --classic
+    # sudo snap install webstorm --classic
+    # sudo snap install datagrip --classic
 
     msg "FINISHED - Installing Software"
 }
@@ -77,7 +78,7 @@ clone_repos() {
     fi
 
     if [ ! -d "$git_dir/light" ]; then
-	git clone https://github.com/haikarainen/light.git $git_dir/light
+    	git clone https://github.com/haikarainen/light.git $git_dir/light
     fi
 
     if [ ! -d "$git_dir/bash_it" ]; then
@@ -92,34 +93,34 @@ clone_repos() {
 }
 
 i3_deps() {
-	msg "Installing i3gaps deps"
+    msg "Installing i3gaps deps"
 
-	sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev \
-		libxcb-util0-dev libxcb-icccm4-dev libyajl-dev \
-		libstartup-notification0-dev libxcb-randr0-dev \
-		libev-dev libxcb-cursor-dev libxcb-xinerama0-dev \
-		libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev \
-		autoconf libxcb-xrm0 libxcb-xrm-dev automake libxcb-shape0-dev -y
+    sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev \
+	 libxcb-util0-dev libxcb-icccm4-dev libyajl-dev \
+	 libstartup-notification0-dev libxcb-randr0-dev \
+	 libev-dev libxcb-cursor-dev libxcb-xinerama0-dev \
+	 libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev \
+	 autoconf libxcb-xrm0 libxcb-xrm-dev automake libxcb-shape0-dev -y
 
-	msg "FINISHED - Installing i3gaps deps"
+    msg "FINISHED - Installing i3gaps deps"
 }
 
 i3_build_install() {
-	msg "Building and Installing i3gaps"
+    msg "Building and Installing i3gaps"
 
-	cd $git_dir/i3
-	git checkout gaps
-	autoreconf --force --install
+    cd $git_dir/i3
+    git checkout gaps
+    autoreconf --force --install
 
-	rm -rf build/
-	mkdir -p build/
-	cd build/
+    rm -rf build/
+    mkdir -p build/
+    cd build/
 
-	../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-	make
-	sudo make install
+    ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+    make
+    sudo make install
 
-	msg "FINISHED - Building and Installing i3gaps"
+    msg "FINISHED - Building and Installing i3gaps"
 }
 
 i3_configure() {
@@ -137,13 +138,13 @@ i3_configure() {
 }
 
 polybar_deps() {
-	msg "Installing Polybar deps"
+    msg "Installing Polybar deps"
 
-	sudo apt install build-essential git cmake cmake-data pkg-config libcairo2-dev libxcb1-dev \
-		libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python-xcbgen xcb-proto libxcb-image0-dev \
-		libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev \
-		libasound2-dev libpulse-dev libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev \
-		libiw-dev libnl-3-dev -y
+    sudo apt install build-essential git cmake cmake-data pkg-config libcairo2-dev libxcb1-dev \
+	 libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python-xcbgen xcb-proto libxcb-image0-dev \
+	 libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev \
+	 libasound2-dev libpulse-dev libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev \
+	 libiw-dev libnl-3-dev -y
 
     msg "FINISHED - Installing Polybar deps"
 }
@@ -207,7 +208,7 @@ keras_tensorflow_install() {
     
     msg "FINISHED - Installing Keras"
 }
-    
+
 compton_install_configure() {
     msg "Configuring Compton"
 
@@ -304,10 +305,10 @@ emacs_packages() {
     msg "Setting up pdf-tools dependencies"
 
     sudo apt install make automake autoconf g++ gcc \
-    libpng-dev zlib1g-dev \
-    libpoppler-glib-dev \
-    libpoppler-private-dev \
-    imagemagick -y
+	 libpng-dev zlib1g-dev \
+	 libpoppler-glib-dev \
+	 libpoppler-private-dev \
+	 imagemagick -y
 
     msg "FINISHED Setting up pdf-tools dependencies"
 }
@@ -373,27 +374,29 @@ bash_config() {
 }
 
 main() {
-    # upgrade_system
-    # install_software
-    # clone_repos
+    upgrade_system
+    install_software
+    clone_repos
 
-    # i3_deps
-    # i3_build_install
-    # i3_configure
+    i3_deps
+    i3_build_install
+    i3_configure
 
-    # polybar_deps
-    # polybar_install
-    # polybar_configure
+    polybar_deps
+    polybar_install
+    polybar_configure
 
-    # bash-it_configure
+    bash-it_configure
 
     # keras_tensorflow_install
 
+    # Add Pytorch
+
     # compton_install_configure
 
-    # urxvt_configure
+    urxvt_configure
 
-    # ranger_configure
+    ranger_configure
 
     xorg_configure
 
