@@ -249,7 +249,7 @@ exec_always --no-startup-id compton --config /home/dominik/.config/compton/compt
    Keyboard layout setting
 
 #+BEGIN_SRC conf
-exec_always --no-startup-id "setxkbmap -model pc105 -layout us,sk,hu -variant ,qwerty,qwerty -option grp:shifts_toggle,ctrl:nocaps"
+exec_always --no-startup-id "setxkbmap -model pc105 -layout us,sk -variant ,qwerty -option grp:shifts_toggle,ctrl:nocaps"
 #+END_SRC
 
 ** Multimedia keys

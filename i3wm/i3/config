@@ -109,7 +109,7 @@ exec --no-startup-id nm-applet
 
 exec_always --no-startup-id compton --config /home/dominik/.config/compton/compton.conf
 
-exec_always --no-startup-id "setxkbmap -model pc105 -layout us,sk,hu -variant ,qwerty,qwerty -option grp:shifts_toggle,ctrl:nocaps"
+exec_always --no-startup-id "setxkbmap -model pc105 -layout us,sk -variant ,qwerty -option grp:shifts_toggle,ctrl:nocaps"
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/volumeUp.sh up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/volumeDown.sh
