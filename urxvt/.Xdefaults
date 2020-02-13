@@ -4,7 +4,7 @@ URxvt.font:		xft:UbuntuMono Nerd Font Mono:regular:size=14
 URxvt.letterSpace:	0
 URxvt.scrollBar:	False
 
-URxvt.perl-ext-common:	default,matcher,selection-to-clipboard
+URxvt.perl-ext-common:	default,matcher,selection-to-clipboard,resize-font
 
 URxvt.urlLauncher:	/usr/bin/firefox
 

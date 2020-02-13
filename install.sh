@@ -68,6 +68,10 @@ install_software() {
 clone_repos() {
     msg "Cloning repos"
 
+    if [ ! -d "$git_dir/urxvt-resize-font" ]; then
+	git clone https://github.com/simmel/urxvt-resize-font.git $git_dir/urxvt-resize-font
+    fi
+
     if [ ! -d "$git_dir/i3" ]; then
 	git clone https://github.com/Airblader/i3.git $git_dir/i3
     fi
@@ -225,6 +229,9 @@ urxvt_configure() {
     msg "Configuring URXVT"
 
     cp $bkp_dir/urxvt/.Xdefaults ~/
+
+    mkdir -p ~/.urxvt/ext
+    cp $git_dir/urxvt-resize-font/resize-font ~/.urxvt/ext
 
     msg "FINISHED - Configuring URXVT"
 }
