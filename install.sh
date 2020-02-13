@@ -45,7 +45,7 @@ add_repositories() {
 install_software() {
     msg "Installing Software"
 
-    sudo apt install emacs rofi git rxvt-unicode redshift \
+    sudo apt install emacs rofi git rxvt-unicode \
 	 nitrogen ranger i3lock libreoffice tlp powertop htop sxiv \
 	 thunderbird pavucontrol preload inkscape gimp cheese python-pip \
 	 arandr zathura zathura-pdf-poppler zathura-ps zathura-djvu zathura-cb \
@@ -54,7 +54,6 @@ install_software() {
 
     # sudo apt install texlive-latex-base texlive-fonts-recommended \
     # 	 texlive-fonts-extra -y
-
     # sudo apt install texlive-latex-extra
 
     # sudo snap install spotify

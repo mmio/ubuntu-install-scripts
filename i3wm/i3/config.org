@@ -225,12 +225,6 @@ bindsym $mod+m exec --no-startup-id urxvt -e ranger
 bindsym $mod+Home exec --no-startup-id i3lock -i ~/Pictures/Lockscreen/lock.png
 #+END_SRC
 
-   NightMode:Redshift
-
-#+BEGIN_SRC conf
-exec --no-startup-id redshift
-#+END_SRC
-
    Network Manager Applet
 
 #+BEGIN_SRC conf

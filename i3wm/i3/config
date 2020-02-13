@@ -102,8 +102,6 @@ bindsym $mod+m exec --no-startup-id urxvt -e ranger
 
 bindsym $mod+Home exec --no-startup-id i3lock -i ~/Pictures/Lockscreen/lock.png
 
-exec --no-startup-id redshift
-
 exec --no-startup-id nm-applet
 
 exec_always --no-startup-id compton --config /home/dominik/.config/compton/compton.conf
