@@ -218,7 +218,7 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <label>
-format-underline = #f50a4d
+format-underline = #008080
 format-warn = <label-warn>
 format-warn-underline = ${self.format-underline}
 
