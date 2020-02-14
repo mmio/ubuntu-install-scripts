@@ -236,6 +236,16 @@ urxvt_configure() {
     msg "FINISHED - Configuring URXVT"
 }
 
+mpv_configure() {
+    msg "Configuring MPV"
+
+    msg "Upgrading youtube-dl"
+    sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
+    sudo chmod a+rx /usr/local/bin/youtube-dl
+
+    msg "FINISHED - Configuring MPV"
+}
+
 ranger_configure() {
     msg "Configuring Ranger"
 
@@ -401,6 +411,8 @@ main() {
     # compton_install_configure
 
     urxvt_configure
+
+    mpv_configure
 
     ranger_configure
 
