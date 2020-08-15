@@ -1,12 +1,12 @@
 URxvt*termName:		rxvt-unicode
 URxvt.reverseVideo:	False
-URxvt.font:		xft:UbuntuMono Nerd Font Mono:regular:size=14
+URxvt.font:		xft:Unifont:regular:size=14
 URxvt.letterSpace:	0
 URxvt.scrollBar:	False
 
 URxvt.perl-ext-common:	default,matcher,selection-to-clipboard,resize-font
 
-URxvt.urlLauncher:	/usr/bin/firefox
+URxvt.urlLauncher:	/usr/bin/chromium
 
 URxvt.matcher.button:	1
 

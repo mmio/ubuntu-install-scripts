@@ -23,7 +23,6 @@ upgrade_system() {
 
     sudo apt update
     sudo apt upgrade -y
-    sudo apt autoremove
 
     msg "FINISHED - Upgrading System"
 }
@@ -42,10 +41,31 @@ add_repositories() {
     msg "Finished Adding repositories"
 }
 
+# add_deb_packages() {
+# Slack
+# LBRY
+# Figma-linux
+# vscode
+# megasync
+# }
+
+install_base_software() {
+    msg "Installing Software"
+
+    # Don't compile for now
+    sudo apt install emacs-lucid git rxvt-unicode unifont fonts-font-awesome \
+	 ranger i3 i3lock libreoffice tlp htop feh compton \
+	 pulsemixer arandr zathura zathura-pdf-poppler \
+	 flameshot xbacklight xss-lock network-manager\
+	 xinit mpv qutebrowser ffmpeg chromium -y
+    
+    msg "FINISHED - Installing Software"
+}
+
 install_software() {
     msg "Installing Software"
 
-    sudo apt install emacs rofi git rxvt-unicode \
+    sudo apt install emacs rofi git rxvt-unicode compton\
 	 nitrogen ranger i3lock libreoffice tlp powertop htop sxiv \
 	 thunderbird pavucontrol preload inkscape gimp cheese python-pip \
 	 arandr zathura zathura-pdf-poppler zathura-ps zathura-djvu zathura-cb \
@@ -76,17 +96,17 @@ clone_repos() {
 	git clone https://github.com/Airblader/i3.git $git_dir/i3
     fi
 
-    if [ ! -d "$git_dir/polybar" ]; then
-	git clone --recursive https://github.com/jaagr/polybar.git $git_dir/polybar
-    fi
+    # if [ ! -d "$git_dir/polybar" ]; then
+    # 	git clone --recursive https://github.com/jaagr/polybar.git $git_dir/polybar
+    # fi
 
-    if [ ! -d "$git_dir/light" ]; then
-    	git clone https://github.com/haikarainen/light.git $git_dir/light
-    fi
+    # if [ ! -d "$git_dir/light" ]; then
+    # 	git clone https://github.com/haikarainen/light.git $git_dir/light
+    # fi
 
-    if [ ! -d "$git_dir/bash_it" ]; then
-	git clone --depth=1 https://github.com/Bash-it/bash-it.git $git_dir/bash_it
-    fi
+    # if [ ! -d "$git_dir/bash_it" ]; then
+    # 	git clone --depth=1 https://github.com/Bash-it/bash-it.git $git_dir/bash_it
+    # fi
 
     if [ ! -d "$git_dir/bashmount" ]; then
 	git clone https://github.com/jamielinux/bashmount.git $git_dir/bashmount
@@ -217,7 +237,6 @@ compton_install_configure() {
 
     cd $bkp_dir
 
-    sudo apt install compton -y
     mkdir -p ~/.config/compton
     
     cp ./compton/compton.conf ~/.config/compton/compton.conf
@@ -250,11 +269,6 @@ ranger_configure() {
     msg "Configuring Ranger"
 
     ranger --copy-config=all
-    cp -r $bkp_dir/ranger/* ~/.config/ranger/
-    echo "set preview_images true" >> ~/.config/rc.conf
-
-    # Uncomment only if you wanna use the default urxvt image preview
-    # echo "set preview_images_method urxvt" >> ~/.config/rc.conf
 
     msg "FINISHED - Configuring Ranger"
 }
@@ -263,13 +277,16 @@ xorg_configure() {
     msg "Configuring XORG"
     
     cp $bkp_dir/xorg/.Xresources ~/
-    # xrdb ~/.Xresources
+    xrdb ~/.Xresources
 
-    echo "# Apply hidpi scaling" >> ~/.xinitrc
-    echo "xrdb ~/.Xresources" >> ~/.xinitrc
+    # echo "# Apply hidpi scaling" >> ~/.xinitrc
+    # echo "xrdb ~/.Xresources" >> ~/.xinitrc
 
     echo "# Prevent Xorg from turning off" >> ~/.xinitrc
     echo "xset s off -dpms" >> ~/.xinitrc
+
+    echo "# Disable bell" >> ~/.xinitrc
+    echo "xset -b" >> ~/.xinitrc
     
     msg "FINISHED - Configuring XORG"
 }
@@ -331,24 +348,12 @@ emacs_packages() {
 
 misc() {
     msg "Copying other stuff"
-    cd $bkp_dir
-    #cp -r ./doc_folder/Documents/* ~/Documents/
-    #cp -r ./projects/* ~/
-    #cp -r ./tensorflow_i3_U5005 ~/Downloads/
 
-    sudo apt install xinit -y
     echo "exec i3" >> ~/.xinitrc
-    
-    cp -r $bkp_dir/i3wm/i3/i3scripts ~/.config/i3
-    sudo apt install python3-pip -y
-    pip3 install fontawesome i3ipc
-    
-    mkdir -p ~/.local/share/fonts
 
+    mkdir -p ~/.local/share/fonts
     cp $bkp_dir/fonts/* ~/.local/share/fonts/
     
-    sudo sysctl vm.swappiness=10
-
     msg "FINISHED - Copying other stuff"
 }
 
@@ -389,45 +394,71 @@ bash_config() {
     msg "FINISHED - Configuring bash"
 }
 
-main() {
-    upgrade_system
-    install_software
-    clone_repos
-
+build_i3() {
     i3_deps
     i3_build_install
     i3_configure
+}
 
+build_polybar() {
     polybar_deps
     polybar_install
     polybar_configure
+}
 
-    bash-it_configure
+i3status_config() {
+    msg "Configuring i3status"
+
+    mkdir -p ~/.config/i3status/
+    cp $bkp_dir/i3status/i3status.conf ~/.config/i3status/config
+
+    msg "FINISHED - Configuring i3status"
+}
+
+main() {
+    install_base_software
+	
+    # upgrade_system
+    # install_software
+
+    clone_repos
+
+    build_i3
+
+    # build_polybar
+
+    # bash-it_configure
 
     # keras_tensorflow_install
 
     # Add Pytorch
 
-    # compton_install_configure
+    compton_install_configure
 
     urxvt_configure
 
     mpv_configure
 
-    ranger_configure
+    ranger_configure 
 
     xorg_configure
 
-    emacs_configure
+    # emacs_configure
 
     bashmount_install
 
     set_wallpaper
 
-    light_configure
+    # light_configure
 
     misc
 
     tear_freeness
+
+    i3status_config
+
+    # Fix sleep bug
+
+    # Copy Bin scripts
 }
 main
