@@ -41,23 +41,50 @@ add_repositories() {
     msg "Finished Adding repositories"
 }
 
-# add_deb_packages() {
-# Slack
-# LBRY
-# Figma-linux
-# vscode
-# megasync
-# }
+add_deb_packages() {
+    # wget -c https://downloads.slack-edge.com/linux_releases/slack-desktop-4.8.0-amd64.deb -O /tmp/slack-desktop-4.8.0-amd64.deb
+    # sudo dpkg -i /tmp/slack-desktop-4.8.0-amd64.deb
+    # sudo apt install -f
+    
+    # curl -s https://api.github.com/repos/Figma-linux/figma-linux/releases/latest \
+    # 	| grep "browser_download_url.*deb" \
+    # 	| cut -d : -f 2,3 \
+    # 	| tr -d \" \
+    # 	| wget -O /tmp/figma-linux.deb -i -
+    # sudo dpkg -i /tmp/figma-linux.deb
+    # sudo apt install -f
+
+    curl -s https://api.github.com/repos/lbryio/lbry-desktop/releases/latest \
+    	| grep "browser_download_url.*deb" \
+    	| cut -d : -f 2,3 \
+    	| tr -d \" \
+    	| wget -O /tmp/lbry.deb -i -
+    sudo dpkg -i /tmp/lbry.deb
+    sudo apt install -f
+
+    # Not sure if this will work in the future
+    wget -c https://az764295.vo.msecnd.net/stable/db40434f562994116e5b21c24015a2e40b2504e6/code_1.48.0-1597304990_amd64.deb -O /tmp/code_amd64.deb
+    sudo dpkg -i /tmp/code_amd64.deb
+    sudo apt install -f
+    
+    # megasync, this will be the most difficult
+
+    # Upgrade in case of outdated .deb files
+    sudo apt update && sudo apt upgrade -y
+}
 
 install_base_software() {
     msg "Installing Software"
 
-    # Don't compile for now
+    # Don't compile for now, in the future try using apt-build
     sudo apt install emacs-lucid git rxvt-unicode unifont fonts-font-awesome \
 	 ranger i3 i3lock libreoffice tlp htop feh compton \
 	 pulsemixer arandr zathura zathura-pdf-poppler \
 	 flameshot xbacklight xss-lock network-manager\
-	 xinit mpv qutebrowser ffmpeg chromium -y
+	 xinit mpv qutebrowser ffmpeg chromium curl -y
+
+    # Not sure if this is needed after removing the gtk3, gtk2 and qt versions
+    echo 'export SAL_USE_VCLPLUGIN=gen' >> ~/.bashrc
     
     msg "FINISHED - Installing Software"
 }
@@ -94,6 +121,10 @@ clone_repos() {
 
     if [ ! -d "$git_dir/i3" ]; then
 	git clone https://github.com/Airblader/i3.git $git_dir/i3
+    fi
+
+    if [ ! -d "~/.nvm" ]; then
+	    git clone https://github.com/nvm-sh/nvm.git ~/.nvm
     fi
 
     # if [ ! -d "$git_dir/polybar" ]; then
@@ -415,50 +446,80 @@ i3status_config() {
     msg "FINISHED - Configuring i3status"
 }
 
+i3blocks_config() {
+    msg "Configuring i3blocks"
+
+    mkdir -p ~/.config/i3blocks/
+    cp $bkp_dir/i3status/config ~/.config/i3blocks/config
+
+    msg "FINISHED - Configuring i3blocks"
+}
+
+install_nvm() {
+    cd ~/.nvm
+    git checkout v0.35.3
+
+    echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
+    echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.bashrc
+    echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.bashrc
+}
+
+install_yarn() {
+    source ~/.bashrc
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    sudo apt update && sudo apt install yarn -y
+}
+
+copy_bin() {
+    mkdir ~/bin
+    cp $bkp_dir/bin/* ~/bin/
+
+    echo "export PATH=/sbin:$PATH" >> ~/.bashrc
+    echo "export PATH=/usr/sbin:$PATH" >> ~/.bashrc
+    echo "export PATH=/usr/local/sbin:$PATH" >> ~/.bashrc
+    echo "export PATH=/home/dominik/bin:$PATH" >> ~/.bashrc
+}
+
 main() {
-    install_base_software
-	
     # upgrade_system
-    # install_software
 
-    clone_repos
+    # install_base_software
 
-    build_i3
+    # clone_repos
 
-    # build_polybar
+    # build_i3
 
-    # bash-it_configure
+    # compton_install_configure
 
-    # keras_tensorflow_install
+    # urxvt_configure
 
-    # Add Pytorch
+    # mpv_configure
 
-    compton_install_configure
+    # ranger_configure 
 
-    urxvt_configure
+    # xorg_configure
 
-    mpv_configure
+    # bashmount_install
 
-    ranger_configure 
+    # set_wallpaper
 
-    xorg_configure
+    # misc
 
-    # emacs_configure
+    # tear_freeness
 
-    bashmount_install
+    # i3status_config
 
-    set_wallpaper
+    # i3blocks_config
 
-    # light_configure
+    # copy_bin
 
-    misc
+    # install_nvm
 
-    tear_freeness
+    # install_yarn
 
-    i3status_config
+    # add_deb_packages
 
-    # Fix sleep bug
-
-    # Copy Bin scripts
+    # Execute Suspend.sh then the lid is closed
 }
 main

@@ -101,7 +101,9 @@ bindsym $mod+Return exec urxvt
 
 bindsym $mod+b exec --no-startup-id chromium
 
-bindsym $mod+d exec dmenu_run -nb "#FFFFFF" -nf "#000000" -fn "Unifont-17" -i
+# start dmenu (a program launcher)
+# -i: Search is case insensitive
+bindsym $mod+d exec dmenu_run -nb "#FFFFFF" -nf "#000000" -sb "#007070" -fn "Unifont-17" -i
 
 bindsym $mod+n exec --no-startup-id emacs
 
@@ -113,7 +115,8 @@ exec --no-startup-id redshift
 
 exec --no-startup-id nm-applet
 
-exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
+# exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
+exec compton --inactive-dim=0.25 -c -r 7 -o 0.25 -l -5 -t -5 -b
 
 exec_always --no-startup-id "setxkbmap -model pc105 -layout us,sk -variant ,qwerty -option grp:shifts_toggle,ctrl:nocaps"
 
@@ -128,14 +131,42 @@ bindsym $mod+Shift+r restart
 
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'EXIT' -b 'Yes' 'i3-msg exit'"
 
+set $teal #007070
+set $teal-light #009090
+
+set $gray-dark #2f343a
+set $gray #5f676a
+set $gray-light #eeeeee
+set $gray-lighter #cccccc
+
+set $white #ffffff
+set $red #900000bindsym $mod+d exec dmenu_run -nb "#FFFFFF" -nf "#000000" -fn "Unifont-17" -i
+
 bar {
 	font pango:Unifont, Awesome 13
-        status_command i3status
+        # status_command i3status
+	status_command i3blocks
 	position top
-	height 35
-	# colors {
-	#        separator #333333
-	#        background #eeeeee
-       	#        statusline #111111
-	# }
+	height 37
+
+	colors {
+	       separator $gray-dark
+	       background $gray-lighter
+       	       statusline $gray-dark
+
+	       # parameter		border		background	font
+	       focused_workspace	$teal		$teal-light	$gray-light
+               active_workspace		$gray		$gray		$white
+               inactive_workspace	$gray-lighter	$gray-lighter	$gray-dark
+               urgent_workspace		$gray-dark	$red		$white
+	}
 }
+
+# class                 border		backgr. text    indicator child_border
+client.focused          $teal-light	$teal 	#ffffff #2e9ef4   #285577
+client.focused_inactive #333333	   	#5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333    	#222222 #888888 #292d2e   #222222
+client.urgent           #2f343a    	#900000 #ffffff #900000   #900000
+client.placeholder      #000000    	#0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
