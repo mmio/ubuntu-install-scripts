@@ -1,0 +1,3 @@
+#!/bin/bash
+
+Chromium --app="https://dashboard.unity3d.com/"

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+Chromium --incognito --app="https://youtube.com"

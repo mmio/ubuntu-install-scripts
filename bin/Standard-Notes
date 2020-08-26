@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/home/dominik/bin/appimages/standard-notes-3.4.2-linux-x86_64.AppImage --no-sandbox

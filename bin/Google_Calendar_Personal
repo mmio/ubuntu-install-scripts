@@ -1,0 +1,3 @@
+#!/bin/bash
+Chromium --app=https://calendar.google.com/calendar/r
+
