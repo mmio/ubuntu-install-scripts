@@ -109,7 +109,7 @@ bindsym $mod+n exec --no-startup-id emacs
 
 bindsym $mod+m exec --no-startup-id urxvt -e ranger
 
-bindsym $mod+Home exec --no-startup-id i3lock -i ~/Pictures/Lockscreen/lock.png
+# bindsym $mod+Home exec --no-startup-id i3lock -i ~/Pictures/Lockscreen/lock.png
 
 exec --no-startup-id redshift
 

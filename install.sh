@@ -54,29 +54,28 @@ add_deb_packages() {
     # sudo dpkg -i /tmp/figma-linux.deb
     # sudo apt install -f
 
-    curl -s https://api.github.com/repos/lbryio/lbry-desktop/releases/latest \
-    	| grep "browser_download_url.*deb" \
-    	| cut -d : -f 2,3 \
-    	| tr -d \" \
-    	| wget -O /tmp/lbry.deb -i -
-    sudo dpkg -i /tmp/lbry.deb
-    sudo apt install -f
+    # curl -s https://api.github.com/repos/lbryio/lbry-desktop/releases/latest \
+    # 	| grep "browser_download_url.*deb" \
+    # 	| cut -d : -f 2,3 \
+    # 	| tr -d \" \
+    # 	| wget -O /tmp/lbry.deb -i -
+    # sudo dpkg -i /tmp/lbry.deb
+    # sudo apt install -f
 
     # Not sure if this will work in the future
-    wget -c https://az764295.vo.msecnd.net/stable/db40434f562994116e5b21c24015a2e40b2504e6/code_1.48.0-1597304990_amd64.deb -O /tmp/code_amd64.deb
-    sudo dpkg -i /tmp/code_amd64.deb
-    sudo apt install -f
+    # wget -c https://az764295.vo.msecnd.net/stable/db40434f562994116e5b21c24015a2e40b2504e6/code_1.48.0-1597304990_amd64.deb -O /tmp/code_amd64.deb
+    # sudo dpkg -i /tmp/code_amd64.deb
+    # sudo apt install -f
     
     # megasync, this will be the most difficult
 
     # Upgrade in case of outdated .deb files
-    sudo apt update && sudo apt upgrade -y
+    # sudo apt update && sudo apt upgrade -y
 }
 
 install_base_software() {
     msg "Installing Software"
 
-    # Don't compile for now, in the future try using apt-build
     sudo apt install emacs-lucid git rxvt-unicode unifont fonts-font-awesome \
 	 ranger i3 i3lock libreoffice tlp htop feh compton \
 	 pulsemixer arandr zathura zathura-pdf-poppler \
@@ -519,7 +518,5 @@ main() {
     # install_yarn
 
     # add_deb_packages
-
-    # Execute Suspend.sh then the lid is closed
 }
 main
