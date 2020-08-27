@@ -91,8 +91,8 @@ install_base_software() {
 install_software() {
     msg "Installing Software"
 
-    sudo apt install emacs rofi git rxvt-unicode compton\
-	 nitrogen ranger i3lock libreoffice tlp powertop htop sxiv \
+    sudo apt install make gcc emacs rofi git rxvt-unicode compton\
+	 nitrogen ranger i3blocks i3lock libreoffice tlp powertop htop sxiv \
 	 thunderbird pavucontrol preload inkscape gimp cheese python-pip \
 	 arandr zathura zathura-pdf-poppler zathura-ps zathura-djvu zathura-cb \
 	 openvpn lxappearance curl g++ pandoc flameshot w3m w3m-img xbacklight \
