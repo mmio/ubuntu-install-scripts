@@ -152,7 +152,7 @@ bar {
 	colors {
 	       separator $gray-dark
 	       background $gray-lighter
-       	       statusline $gray-dark
+	       statusline $gray-dark
 
 	       # parameter		border		background	font
 	       focused_workspace	$teal		$teal-light	$gray-light

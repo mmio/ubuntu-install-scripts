@@ -76,8 +76,8 @@ add_deb_packages() {
 install_base_software() {
     msg "Installing Software"
 
-    sudo apt install emacs-lucid git rxvt-unicode unifont fonts-font-awesome \
-	 ranger i3 i3lock libreoffice tlp htop feh compton \
+    sudo apt install –no-install-recommends emacs-lucid git rxvt-unicode unifont fonts-font-awesome \
+	 ranger i3 i3lock i3blocks make gcc sudo libreoffice tlp htop feh compton \
 	 pulsemixer arandr zathura zathura-pdf-poppler \
 	 flameshot xbacklight xss-lock network-manager\
 	 xinit mpv qutebrowser ffmpeg chromium curl -y
@@ -148,7 +148,7 @@ clone_repos() {
 i3_deps() {
     msg "Installing i3gaps deps"
 
-    sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev \
+    sudo apt install –no-install-recommends libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev \
 	 libxcb-util0-dev libxcb-icccm4-dev libyajl-dev \
 	 libstartup-notification0-dev libxcb-randr0-dev \
 	 libev-dev libxcb-cursor-dev libxcb-xinerama0-dev \
@@ -193,7 +193,7 @@ i3_configure() {
 polybar_deps() {
     msg "Installing Polybar deps"
 
-    sudo apt install build-essential git cmake cmake-data pkg-config libcairo2-dev libxcb1-dev \
+    sudo apt install –no-install-recommends build-essential git cmake cmake-data pkg-config libcairo2-dev libxcb1-dev \
 	 libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python-xcbgen xcb-proto libxcb-image0-dev \
 	 libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev \
 	 libasound2-dev libpulse-dev libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev \
@@ -240,7 +240,7 @@ bash-it_configure() {
 keras_tensorflow_install() {
     msg "Installing Tensorflow"
     
-    sudo apt-get install python3-pip python3-dev python-virtualenv -y
+    sudo apt-get install –no-install-recommends python3-pip python3-dev python-virtualenv -y
 
     mkdir ~/keras_w_tensorflow
     cd ~/keras_w_tensorflow
@@ -367,7 +367,7 @@ emacs_packages() {
 
     msg "Setting up pdf-tools dependencies"
 
-    sudo apt install make automake autoconf g++ gcc \
+    sudo apt install –no-install-recommends make automake autoconf g++ gcc \
 	 libpng-dev zlib1g-dev \
 	 libpoppler-glib-dev \
 	 libpoppler-private-dev \
@@ -467,7 +467,7 @@ install_yarn() {
     source ~/.bashrc
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    sudo apt update && sudo apt install yarn -y
+    sudo apt update && sudo apt install –no-install-recommends yarn -y
 }
 
 copy_bin() {
