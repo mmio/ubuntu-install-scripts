@@ -42,6 +42,14 @@ add_repositories() {
 }
 
 add_deb_packages() {
+    # The following sofware should be installed from deb packages
+    # vscode or codium
+    # megasync
+    # ungoogled-chromium
+    # figma linux
+    # lbry
+    # slack
+
     # wget -c https://downloads.slack-edge.com/linux_releases/slack-desktop-4.8.0-amd64.deb -O /tmp/slack-desktop-4.8.0-amd64.deb
     # sudo dpkg -i /tmp/slack-desktop-4.8.0-amd64.deb
     # sudo apt install -f
@@ -76,7 +84,7 @@ add_deb_packages() {
 install_base_software() {
     msg "Installing Software"
 
-    sudo apt install --no-install-recommends emacs-lucid git rxvt-unicode unifont fonts-font-awesome \
+    sudo apt install --no-install-recommends numlockx emacs-lucid git rxvt-unicode unifont fonts-font-awesome \
 	 ranger i3 i3lock i3blocks make gcc sudo libreoffice tlp htop feh compton \
 	 pulsemixer arandr zathura zathura-pdf-poppler deluged deluge-console \
 	 xbacklight xss-lock network-manager\
