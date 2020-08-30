@@ -79,7 +79,7 @@ install_base_software() {
     sudo apt install --no-install-recommends emacs-lucid git rxvt-unicode unifont fonts-font-awesome \
 	 ranger i3 i3lock i3blocks make gcc sudo libreoffice tlp htop feh compton \
 	 pulsemixer arandr zathura zathura-pdf-poppler deluged deluge-console \
-	 flameshot xbacklight xss-lock network-manager\
+	 xbacklight xss-lock network-manager\
 	 xinit mpv qutebrowser ffmpeg chromium curl -y
 
     # Not sure if this is needed after removing the gtk3, gtk2 and qt versions
